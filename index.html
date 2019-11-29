@@ -1,49 +1,217 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-		<title>reveal.js</title>
+    <title>WebAssembly</title>
 
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/theme/moon.css" />
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css" />
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? 'css/print/pdf.css'
+        : 'css/print/paper.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>WebAssembly</h1>
+          <!-- <h3>Subtitle</h3> -->
+          <p>
+            <small
+              >Created by
+              <a href="http://vindhya.ca" target="_blank"
+                >Vindhya Raviraj</a
+              ></small
+            >
+          </p>
+        </section>
 
-		<script src="js/reveal.js"></script>
+        <section>
+          <img
+            src="images/wasm-meme.jpeg"
+            alt="WebAssembly is neither web, nor assembly. Discuss"
+          />
+        </section>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true }
-				]
-			});
-		</script>
-	</body>
+        <section>
+          <h2>What is WebAssembly (Wasm)?</h2>
+          <ul>
+            <li>Standard to bring native code to web browsers</li>
+            <ul>
+              <li>Supported in all major browsers</li>
+            </ul>
+            <li>
+              Compilation target for native programming languages such as, C,
+              C++, Go, Rust
+            </li>
+          </ul>
+
+          <aside class="notes">
+            Compilation target to build a .wasm file for native programming
+            languages like C, C++, C#, Go, and Rust
+          </aside>
+        </section>
+
+        <section>
+          <h2>Compilation target? Huh?</h2>
+          <ul>
+            <li>JS is interpreted and compiled in the browser</li>
+            <li>Wasm is partially compiled ahead of time</li>
+          </ul>
+
+          <aside class="notes">
+            <p>
+              JavaScript is an interpreted language which means that, at a very
+              high level, web browsers go through each line of source code and
+              parse, optimize, and execute the code at runtime.
+            </p>
+            <p>
+              When traditional languages are compiled they do some of this work
+              ahead of when the code is actually executed - what is generated
+              when these languages are compiled is called the Intermediate
+              Representation. WebAssembly is a type of Intermediate
+              Representation that web browsers understand.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <section>
+            <img src="images/03-06-langs06.png" alt="" />
+            <small>
+              Source:
+              <a
+                href="https://hacks.mozilla.org/2017/02/a-crash-course-in-assembly/"
+                target="_blank"
+              >
+                Lin Clark, Mozilla
+              </a>
+            </small>
+
+            <aside class="notes">
+              The Intermediate Representation (IR) is the bytecode that the
+              compilers generate from source code. Machines can then take that
+              representation and execute it.
+            </aside>
+          </section>
+
+          <section>
+            <img src="images/04-02-langs08.png" alt="" />
+            <small>
+              Source:
+              <a
+                href="https://hacks.mozilla.org/2017/02/a-crash-course-in-assembly/"
+                target="_blank"
+              >
+                Lin Clark, Mozilla
+              </a>
+            </small>
+          </section>
+        </section>
+
+        <section>
+          <h2>Benefits</h2>
+          <ul>
+            <li>Fast, more consistently performant</li>
+            <li>Smaller downloads</li>
+            <li>All the benefits of web apps: linkable, secure, composable</li>
+          </ul>
+
+          <aside class="notes">
+            <p>
+              Because WebAssembly is already optimized for web browsers, its
+              applications run more quickly and the file sizes are smaller.
+            </p>
+            <p>
+              In addition, it gets all the other benefits that web apps have
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Examples</h2>
+          <ul>
+            <li>
+              AutoCAD now works
+              <a
+                href="https://web.autocad.com/acad/me/drawings/612245429/editor"
+                target="_blank"
+                >on the web</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://bellard.org/jslinux/vm.html?url=https://bellard.org/jslinux/win2k.cfg&mem=192&graphic=1&w=1024&h=768"
+                target="_blank"
+                >Windows 2000 emulation</a
+              >
+            </li>
+            <li>
+              Adobe Lightroom web app: A core image-editing library written in
+              asm.js (pre-cursor to WebAssembly)
+            </li>
+            <li>
+              eBay Barcode Scanner for web
+              <a
+                href="https://tech.ebayinc.com/engineering/webassembly-at-ebay-a-real-world-use-case/"
+                target="_blank"
+                >(article)</a
+              >
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Future</h2>
+          <p>
+            Library authors, like the React team, can rewrite modules in the
+            library using Wasm
+          </p>
+
+          <aside class="notes">
+            What's more exciting is what's to come with WebAssembly. Library
+            authors, like the React team, can rewrite modules in the library
+            using Wasm
+          </aside>
+        </section>
+
+        <section>
+          <h2>Thank you!</h2>
+        </section>
+      </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true }
+        ]
+      });
+    </script>
+  </body>
 </html>
